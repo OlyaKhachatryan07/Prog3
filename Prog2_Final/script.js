@@ -5,7 +5,7 @@ function generator(matLen, gr, grEat, pred, vit, add=1) {
         for (let j = 0; j < matLen; j++) {
             matrix[i][j] = 0;
         }
-    }
+    } 
     for (let i = 0; i < gr; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
@@ -44,6 +44,7 @@ function generator(matLen, gr, grEat, pred, vit, add=1) {
     return matrix;
 }
 
+var socket = io();
 let side = 30;
 let matrix = generator(21, 21, 15, 7, 5, 11);
 let grassArr = []
@@ -82,7 +83,7 @@ function setup() {
     }
 }
 
-function draw() {
+function nkarel(matrix) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
 
@@ -132,3 +133,9 @@ function draw() {
 
     }
 }
+
+setInterval(
+    function () {
+        socket.on('send matrix', nkarel)
+    }, 1000
+);
