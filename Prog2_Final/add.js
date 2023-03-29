@@ -28,7 +28,7 @@ module.exports = class Add extends LivingCreature {
 
         if (grassEaterArr.length == 0){
             var emptyCells = this.chooseCell(0);
-            var newCell = random(emptyCells);
+            var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
             if (newCell && this.multiply >= 115) {
                 var newX = newCell[0];
@@ -66,7 +66,7 @@ module.exports = class Add extends LivingCreature {
 
         if (predatorArr.length == 0){
             var emptyCells = this.chooseCell(0);
-            var newCell = random(emptyCells);
+            var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
             if (newCell && this.multiply >= 115) {
                 var newX = newCell[0];
@@ -85,7 +85,7 @@ module.exports = class Add extends LivingCreature {
 
         if (vitaminArr.length == 0){
             var emptyCells = this.chooseCell(0);
-            var newCell = random(emptyCells);
+            var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
             if (newCell && this.multiply >= 115) {
                 var newX = newCell[0];
@@ -94,6 +94,25 @@ module.exports = class Add extends LivingCreature {
     
                 var newVitamin = new Vitamin(newX, newY);
                 vitaminArr.push(newVitamin);
+                this.multiply = 0;
+            }
+        }
+    }
+
+    hunter() {
+        this.multiply++;
+
+        if (hunterArr.length == 0){
+            var emptyCells = this.chooseCell(0);
+            var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
+            if (newCell && this.multiply >= 115) {
+                var newX = newCell[0];
+                var newY = newCell[1];
+                matrix[newY][newX] = 5;
+    
+                var newHunter = new Hunter(newX, newY);
+                hunterArr.push(newHunter);
                 this.multiply = 0;
             }
         }

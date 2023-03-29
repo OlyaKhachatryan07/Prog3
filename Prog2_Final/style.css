@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Yellowtail&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+h1{
+    width: 100%;
+    /* margin: 0 auto; */
+    color: #484848;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer
+}
+h1 span{
+    transition: .5s linear
+}
+h1:hover span:nth-child(1){
+    margin-right: 5px
+}
+h1:hover span:nth-child(1):after{
+    content: "'";
+}
+h1:hover span:nth-child(2){
+    margin-left: 30px
+}
+h1:hover span{
+    color: #fff;
+    text-shadow: 0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #fff;
+}
+canvas {
+    display: block;
+    margin: 0 auto;
+    /* padding: 100px 0; */
+    box-shadow: 0 0 45px 0 rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    animation: my--anim 2s linear 2s infinite alternate;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Yellowtail', cursive;
+}
+
+th{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 25px;
+}
+.desc__block{
+    max-width: 100%;
+    width: 1000px;
+    margin: 100px auto 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.desc__row{
+    position: relative;
+    width: calc(90% / 3);
+    margin-bottom: 20px;
+    height: 300px;
+    overflow: hidden;
+}
+.rows{
+    height: 50px;
+    border: 3px solid white;
+    border-radius: 35px 0 35px 0;
+    transition: all 0.3s;
+}
+.desc__num{
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 30px 0 30px 0;
+    text-align: center;
+    font-family: 'Merriweather Sans', sans-serif;
+    color: white;
+}
+.desc__text{
+    cursor: default;
+    position: absolute;
+    top: -100%;
+    padding: 20px;
+    color: white;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.rows:hover .desc__text{
+    top: 50px;
+    opacity: 1;
+}
+.rows:hover{
+    height: 300px;
+}
+.red {
+    color: red
+}
+.blue {
+    color: blue
+}
+.orange {
+    color: orange
+}
+.all__btns{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.add__btn{
+    font-family: 'Merriweather Sans', sans-serif;
+    margin: 50px 25px 150px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: white;
+    display: block;
+    transition: all 0.5s;
+}
+.add__btn:hover{
+    box-shadow: 0 0 40px 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.5)rotate(10deg);
+}
+
+.exanak__btns .btn__exanak{
+    font-family: 'Merriweather Sans', sans-serif;
+    margin: 25px 100px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: black;
+    display: block;
+    transition: all 0.3s;
+}
+.btn__exanak:hover{
+    box-shadow: 0 0 40px 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.5)rotate(-10deg);
+}

@@ -58,6 +58,7 @@ function generator(matLen, gr, grEat, pred, vit, add=1) {
             matrix[x][y] = 5;
         }
     }
+    io.emit("send matrix", matrix);
     return matrix;
 }
 matrix = generator(21, 21, 15, 7, 5, 11);
@@ -102,6 +103,7 @@ function createObject(){
             }
         }
     }
+    io.emit("send matrix", matrix);
 }
 createObject();
 
@@ -127,5 +129,6 @@ function gameMove() {
         addArr[i].predator()
         addArr[i].vitamin()
     }
+    io.emit("send matrix", matrix);
 }
 setInterval(gameMove, 3000);
