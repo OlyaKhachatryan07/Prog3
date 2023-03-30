@@ -23,6 +23,7 @@ module.exports = class Add extends LivingCreature {
         this.getNewCoordinates();
         return super.chooseCell(character);
     }
+    
     grassEater() {
         this.multiply++;
 
@@ -47,7 +48,7 @@ module.exports = class Add extends LivingCreature {
 
         if (grassArr.length == 0){
             var emptyCells = this.chooseCell(0);
-            var newCell = random(emptyCells);
+            var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
             if (newCell && this.multiply >= 115) {
                 var newX = newCell[0];

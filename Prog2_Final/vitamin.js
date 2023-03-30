@@ -3,8 +3,8 @@ let LivingCreature = require("./LivingCreature");
 module.exports = class Vitamin extends LivingCreature{
     constructor(x, y) {
         super (x,y);
-        this.multiply = 0
-        this.energy = 20
+        this.multiply = 0;
+        this.energy = 20;
         this.directions = [];
     }
     getNewCoordinates() {
@@ -23,6 +23,7 @@ module.exports = class Vitamin extends LivingCreature{
         this.getNewCoordinates();
         return super.chooseCell(character);
     }
+
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
@@ -38,10 +39,11 @@ module.exports = class Vitamin extends LivingCreature{
             this.multiply = 0;
         }
     }
+
     move() {
-        this.energy--
-        var emptyCells = this.chooseCell(0)
-        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+        this.energy--;
+        var emptyCells = this.chooseCell(0);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
         if (newCell && this.energy >= 0) {
             var newX = newCell[0]
@@ -53,7 +55,7 @@ module.exports = class Vitamin extends LivingCreature{
         }
         else {
             if (this.energy < 0) {
-                this.die()
+                this.die();
             }
         }
     }

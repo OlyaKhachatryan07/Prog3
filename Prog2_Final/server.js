@@ -16,7 +16,7 @@ server.listen(3000, () => {
 
 matrix = [];
 
-function generator(matLen, gr, grEat, pred, vit, add=1) {
+function generator(matLen, gr, grEat, pred, vit, hun, add = 1) {
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
         for (let j = 0; j < matLen; j++) {
@@ -51,11 +51,18 @@ function generator(matLen, gr, grEat, pred, vit, add=1) {
             matrix[x][y] = 4;
         }
     }
-    for (let i = 0; i < add; i++) {
+    for (let i = 0; i < hun; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 5;
+        }
+    }
+    for (let i = 0; i < add; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 6;
         }
     }
     io.emit("send matrix", matrix);
@@ -66,40 +73,46 @@ matrix = generator(21, 21, 15, 7, 5, 11);
 io.sockets.emit('send matrix', matrix);
 
 
-grassArr = []
-grassEaterArr = []
-predatorArr = []
-vitaminArr = []
-addArr = []
+grassArr = [];
+grassEaterArr = [];
+predatorArr = [];
+vitaminArr = [];
+hunArr = [];
+addArr = [];
 
 const Grass = require("./grass");
 const GrassEater = require("./grassEater");
 const Add = require("./add");
 const Predator = require("./predator");
+const Hunter = require("./hunter");
 const Vitamin = require("./vitamin");
 
 function createObject(){
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] == 1) {
-                let gr = new Grass(j, i)
-                grassArr.push(gr)
+                let gr = new Grass(j, i);
+                grassArr.push(gr);
             }
             else if (matrix[i][j] == 2) {
-                let gre = new GrassEater(j, i)
-                grassEaterArr.push(gre)
+                let gre = new GrassEater(j, i);
+                grassEaterArr.push(gre);
             }
             else if (matrix[i][j] == 3) {
-                let pr = new Predator(j, i)
-                predatorArr.push(pr)
+                let pr = new Predator(j, i);
+                predatorArr.push(pr);
             }
             else if (matrix[i][j] == 4) {
-                let vit = new Vitamin(j, i)
-                vitaminArr.push(vit)
+                let vit = new Vitamin(j, i);
+                vitaminArr.push(vit);
             }
             else if (matrix[i][j] == 5) {
-                let add = new Add(j, i)
-                addArr.push(add)
+                let hun = new Hunter(j, i);
+                hunArr.push(hun);
+            }
+            else if (matrix[i][j] == 6) {
+                let add = new Add(j, i);
+                addArr.push(add);
             }
         }
     }
@@ -128,6 +141,11 @@ function gameMove() {
         addArr[i].grassEater()
         addArr[i].predator()
         addArr[i].vitamin()
+        addArr[i].hunter()
+    }
+    for (let i in hunArr) {
+        hunArr[i].mul()
+        hunArr[i].eat()
     }
     io.emit("send matrix", matrix);
 }

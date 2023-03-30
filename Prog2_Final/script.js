@@ -41,5 +41,3 @@ setInterval(
         socket.on('send matrix', nkarel)
     }, 1000
 );
-
-//
