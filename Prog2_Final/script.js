@@ -12,7 +12,18 @@ function nkarel(matrix) {
         for (let x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                fill("green");
+                if (weath == "spring") {
+                    fill("light green");   
+                }
+                else if (weath == "summer") {
+                    fill("green");   
+                }
+                if (weath == "autumn") {
+                    fill("orange");   
+                }
+                if (weath == "winter") {
+                    fill("white");   
+                }
             }
             else if (matrix[y][x] == 2) {
                 fill("yellow");
@@ -36,6 +47,7 @@ function nkarel(matrix) {
 }
 
 socket.on("send matrix", nkarel);
+
 setInterval(
     function () {
         socket.on('send matrix', nkarel)
