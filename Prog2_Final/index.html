@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-   
+    <div class="container">
+        <h1>EVENTS</h1>
+        <button onclick="killAll()" class="abc">Kill them all</button>
+                  <div>
+                      <button onclick="addGrass()" >Add Grass</button>
+                  </div>
+                  <div>
+                      <button onclick="addGrassEater()" >Add Grass Eater</button>
+                  </div>
+                  <div>
+                      <button onclick="addPredator()" >Add Predator</button>
+                  </div>
+                  <div>
+                      <button onclick="addHunter()">Add Hunter</button>
+                  </div>  
+                  <div>
+                    <button onclick="addVitamin()">Add Vitamin</button>
+                  </div>      
+                  <div>
+                    <button onclick="winter()" >Winter</button>
+                  </div>
+                  <div>
+                    <button onclick="spring()" >Spring</button>
+                  </div>
+                  <div>
+                    <button onclick="summer()" >Summer</button>
+                  </div>
+                  <div>
+                    <button onclick="autumn()" >Autumn</button>
+                  </div>                   
+    </div>
+
     <script src="socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="script.js"></script>

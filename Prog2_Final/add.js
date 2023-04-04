@@ -1,4 +1,9 @@
 let LivingCreature = require("./LivingCreature");
+const Grass = require("./grass");
+const GrassEater = require("./grassEater");
+const Hunter = require("./hunter");
+const Predator = require("./predator");
+const Vitamin = require("./vitamin");
 
 module.exports = class Add extends LivingCreature {
     constructor(x, y) {
